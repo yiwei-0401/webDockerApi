@@ -1,4 +1,4 @@
-package controller
+package docker
 
 import (
 	"context"
@@ -13,7 +13,7 @@ type dockerController struct {
 	gin.Context
 }
 
-func Ps(c *gin.Context)  {
+func Ps(c *gin.Context) {
 	cli, err := client.NewClientWithOpts(client.FromEnv)
 	if err != nil {
 		panic(err)
@@ -23,4 +23,9 @@ func Ps(c *gin.Context)  {
 		panic(err)
 	}
 	c.JSON(200, container)
+}
+
+//运行一个容器
+func Run(c *gin.Context) {
+
 }

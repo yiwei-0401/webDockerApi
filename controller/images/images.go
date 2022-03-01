@@ -1,4 +1,4 @@
-package controller
+package images
 
 import (
 	"context"
@@ -6,7 +6,12 @@ import (
 	"github.com/docker/docker/client"
 	"github.com/gin-gonic/gin"
 )
-func List(c *gin.Context)  {
+
+type imagesController struct {
+	gin.Context
+}
+
+func List(c *gin.Context) {
 	cli, err := client.NewClientWithOpts(client.FromEnv)
 	if err != nil {
 		panic(err)
@@ -17,3 +22,13 @@ func List(c *gin.Context)  {
 	}
 	c.JSON(200, imgs)
 }
+
+/*func CreateImage(c *gin.Context) {
+	cli, err := client.NewClientWithOpts(client.FromEnv)
+	if err != nil {
+		panic(err.Error())
+	}
+	res, err := cli.ImageBuild()
+	v := 1
+	c.JSON(200, v)
+}*/
